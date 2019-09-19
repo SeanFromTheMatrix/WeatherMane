@@ -1,5 +1,5 @@
 //
-//  HourlyData.swift
+//  CurrentWeather.swift
 //  WeatherMane
 //
 //  Created by Sean Bukich on 9/18/19.
@@ -8,11 +8,12 @@
 
 import Foundation
 
-struct HourlyData: Decodable {
+struct CurrentWeather: Decodable {
     
     let time: Int
     let summary: String
     let icon: String
+    let nearestStormDistance: Double
     let precipIntensity: Double
     let precipProbability: Double
     let temperature: Double

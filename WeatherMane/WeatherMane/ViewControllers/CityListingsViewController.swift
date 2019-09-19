@@ -36,18 +36,21 @@ class CityListingsViewController: UIViewController {
         }
 
         URLSession.shared.dataTask(with: url) { (data, response, error) in
+            
             guard let d = data else {
                 return
             }
 
             do {
+                
                 let forecasts = try JSONDecoder().decode(Forecast.self, from: d)
                 self.tableData.append(forecasts)
+                
             } catch {
                 print("error", error)
             }
 
-            }.resume()
+        }.resume()
 
     }
     
@@ -61,18 +64,21 @@ class CityListingsViewController: UIViewController {
         }
         
         URLSession.shared.dataTask(with: url) { (data, response, error) in
+            
             guard let d = data else {
                 return
             }
             
             do {
+                
                 let forecasts = try JSONDecoder().decode(Forecast.self, from: d)
                 self.tableData.append(forecasts)
+                
             } catch {
                 print("error", error)
             }
             
-            }.resume()
+        }.resume()
         
     }
     
@@ -86,19 +92,21 @@ class CityListingsViewController: UIViewController {
         }
         
         URLSession.shared.dataTask(with: url) { (data, response, error) in
+            
             guard let d = data else {
                 return
             }
             
             do {
+                
                 let forecasts = try JSONDecoder().decode(Forecast.self, from: d)
                 self.tableData.append(forecasts)
-                print("success3", self.tableData)
+                
             } catch {
                 print("error", error)
             }
             
-            }.resume()
+        }.resume()
 
     }
     

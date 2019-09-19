@@ -9,8 +9,9 @@
 import Foundation
 
 struct HourlyWeather: Decodable {
+    
     let summary: String?
     let icon: String?
     let data: [HourlyData]?
-
+    
 }

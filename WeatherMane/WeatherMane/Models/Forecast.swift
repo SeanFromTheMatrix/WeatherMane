@@ -17,9 +17,11 @@ struct Forecast: Decodable {
     let hourlyWeather: HourlyWeather
     
     enum CodingKeys: String, CodingKey {
+        
         case latitude, longitude
         case timeZone = "timezone"
         case currentWeather = "currently", hourlyWeather = "hourly"
+        
     }
     
 }

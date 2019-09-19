@@ -143,6 +143,7 @@
 		0C4CB5502332229C004DE8BD /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				0C4CB553233222F5004DE8BD /* CurrentWeather.swift */,
 				0C4CB551233222B9004DE8BD /* Forecast.swift */,
 				0C4CB555233223EE004DE8BD /* HourlyWeather.swift */,
 				0C4CB55723322421004DE8BD /* HourlyData.swift */,
@@ -161,7 +162,6 @@
 		0C4CB55B233224B2004DE8BD /* TableViewCells */ = {
 			isa = PBXGroup;
 			children = (
-				0C4CB553233222F5004DE8BD /* CurrentWeather.swift */,
 				0C4CB54C23321835004DE8BD /* CityDetailsTableViewCell.swift */,
 			);
 			path = TableViewCells;
