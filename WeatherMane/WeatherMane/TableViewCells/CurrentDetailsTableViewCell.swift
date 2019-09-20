@@ -11,7 +11,7 @@ import UIKit
 class CurrentDetailsTableViewCell: UITableViewCell {
     
     @IBOutlet weak var nearestStormLabel: UILabel!
-    @IBOutlet weak var humidityLabel: UILabel!
+    @IBOutlet weak var looksLikeLabel: UILabel!
     @IBOutlet weak var windSpeedLabel: UILabel!
     
     var currentWeather: CurrentWeather?
@@ -27,7 +27,7 @@ class CurrentDetailsTableViewCell: UITableViewCell {
         }
         
         nearestStormLabel.text = "\(c.nearestStormDistance) mi."
-        humidityLabel.text = "\(c.humidity)%"
+        looksLikeLabel.text = "\(c.summary)"
         windSpeedLabel.text = "\(c.windSpeed) mph"
 
     }

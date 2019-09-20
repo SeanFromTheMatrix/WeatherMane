@@ -34,11 +34,13 @@ class ForecastDetailsViewController: UIViewController {
     }
     
     func setUpGestures() {
+        
         let goBackTap = UITapGestureRecognizer(target: self, action: #selector(backTapAction(_:)))
         goBackTapArea.addGestureRecognizer(goBackTap)
     }
     
     @objc func backTapAction(_ t: UITapGestureRecognizer) {
+        
         self.navigationController?.popViewController(animated: true)
     }
 
@@ -47,13 +49,18 @@ class ForecastDetailsViewController: UIViewController {
 extension ForecastDetailsViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
         switch indexPath.section {
+            
         case ForeCastSections.general.rawValue:
             return 100
+            
         case ForeCastSections.current.rawValue:
             return 150
+            
         case ForeCastSections.hourly.rawValue:
             return 150
+            
         default:
             return 0
             
@@ -68,21 +75,27 @@ extension ForecastDetailsViewController: UITableViewDelegate {
 extension ForecastDetailsViewController: UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
+        
         return ForeCastSections.allCases.count
     }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         switch section {
         case ForeCastSections.general.rawValue:
+            
             if generalData == nil {
                 return 0
             }
             
             return 1
+            
         case ForeCastSections.current.rawValue:
             return 1
+            
         case ForeCastSections.hourly.rawValue:
             return hourlyData.count
+            
         default:
             return 1
 
@@ -94,15 +107,19 @@ extension ForecastDetailsViewController: UITableViewDataSource {
         let view = Bundle.main.loadNibNamed("ForecastDetailHeaderView", owner: self, options: nil)![0] as? ForecastDetailHeaderView
         
         switch section {
+            
         case ForeCastSections.general.rawValue:
             view?.forecastTypeLabel.text = "Location"
             return view
+            
         case ForeCastSections.current.rawValue:
             view?.forecastTypeLabel.text = "Current Forecast"
             return view
+            
         case ForeCastSections.hourly.rawValue:
             view?.forecastTypeLabel.text = "Previous Forecasts by the Hour"
             return view
+            
         default:
             return view
         }
@@ -112,12 +129,14 @@ extension ForecastDetailsViewController: UITableViewDataSource {
         var cell: UITableViewCell!
         
         switch indexPath.section {
+            
         case ForeCastSections.general.rawValue:
             let nc = tableView.dequeueReusableCell(withIdentifier: "GeneralDetailsTableViewCell", for: indexPath) as! GeneralDetailsTableViewCell
             
             nc.dataSource = generalData
             nc.styleCell()
             cell = nc
+            
         case ForeCastSections.current.rawValue:
             let nc = tableView.dequeueReusableCell(withIdentifier: "CurrentDetailsTableViewCell", for: indexPath) as! CurrentDetailsTableViewCell
             
@@ -125,6 +144,7 @@ extension ForecastDetailsViewController: UITableViewDataSource {
             nc.styleCell()
 
             cell = nc
+            
         case ForeCastSections.hourly.rawValue:
             let nc = tableView.dequeueReusableCell(withIdentifier: "HourlyDetailsTableViewCell", for: indexPath) as! HourlyDetailsTableViewCell
             
@@ -132,6 +152,7 @@ extension ForecastDetailsViewController: UITableViewDataSource {
             nc.styleCell()
 
             cell = nc
+            
         default:
             return cell
         }
@@ -144,10 +165,13 @@ extension ForecastDetailsViewController: UITableViewDataSource {
             
         case ForeCastSections.general.rawValue:
             return 50
+            
         case ForeCastSections.current.rawValue:
             return 50
+            
         case ForeCastSections.hourly.rawValue:
             return 50
+            
         default:
             return 50
             
