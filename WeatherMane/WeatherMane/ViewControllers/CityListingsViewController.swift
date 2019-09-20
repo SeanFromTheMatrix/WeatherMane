@@ -87,7 +87,9 @@ extension CityListingsViewController: UITableViewDelegate {
         let sb = UIStoryboard(name: "Main", bundle: nil)
         let vc = sb.instantiateViewController(withIdentifier: "ForecastDetailsViewController") as! ForecastDetailsViewController
         
-        
+        vc.currentData = tableData?.currentWeather
+        vc.generalData = tableData
+        vc.hourlyData = tableData?.hourlyWeather.data[indexPath.row]
         
         self.navigationController?.pushViewController(vc, animated: true)
     }
