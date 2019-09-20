@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct HourlyData: Decodable {
+struct HourlyData: Codable {
     
     let time: Int
     let summary: String

@@ -9,7 +9,7 @@
 import Foundation
 
 struct Forecast: Decodable {
-    
+
     let latitude: Float
     let longitude: Float
     let timeZone: String
