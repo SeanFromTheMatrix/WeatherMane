@@ -24,6 +24,8 @@ class CityListingsViewController: UIViewController {
         //disable scrolling since we are using a TableView but only loading 1 item
         tableView.isScrollEnabled = false
         
+        self.navigationController?.isNavigationBarHidden = true
+
         // set alpha to 0 until data loads in order to prevent flashing
         tableView.alpha = 0.0
         
@@ -61,7 +63,9 @@ class CityListingsViewController: UIViewController {
                 // set alpha back to 1 so we can see results
                 DispatchQueue.main.async {
                     self.tableView.reloadData()
-                    self.tableView.alpha = 1.0
+                    UIView.animate(withDuration: 0.99, animations: {
+                        self.tableView.alpha = 1.0
+                    })
                 }
             } catch {
                 
@@ -87,10 +91,15 @@ extension CityListingsViewController: UITableViewDelegate {
         let sb = UIStoryboard(name: "Main", bundle: nil)
         let vc = sb.instantiateViewController(withIdentifier: "ForecastDetailsViewController") as! ForecastDetailsViewController
         
-        vc.currentData = tableData?.currentWeather
-        vc.generalData = tableData
-        vc.hourlyData = tableData?.hourlyWeather.data[indexPath.row]
-        
+        guard let d = tableData?.hourlyWeather.data,
+                let cw = tableData?.currentWeather,
+                    let gd = tableData else {
+                            return
+        }
+        vc.hourlyData = d
+        vc.currentData = cw
+        vc.generalData = gd
+    
         self.navigationController?.pushViewController(vc, animated: true)
     }
     

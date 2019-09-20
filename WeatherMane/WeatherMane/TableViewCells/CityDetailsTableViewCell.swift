@@ -15,7 +15,6 @@ class CityDetailsTableViewCell: UITableViewCell {
     @IBOutlet weak var cityTemp: UILabel!
     @IBOutlet weak var cityVibe: UILabel!
     
-    
     var forecast: Forecast?
     var hourlyData: HourlyData?
     var currentWeather: CurrentWeather?
@@ -38,7 +37,7 @@ class CityDetailsTableViewCell: UITableViewCell {
         }
         
         cityName.text = f.timeZone
-        cityTemp.text = "\(f.currentWeather.temperature)"
+        cityTemp.text = "\(Int(f.currentWeather.temperature))°F"
         cityVibe.text = f.currentWeather.summary
         
     }

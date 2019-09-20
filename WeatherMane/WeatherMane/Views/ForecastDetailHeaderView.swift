@@ -9,9 +9,11 @@
 import UIKit
 
 class ForecastDetailHeaderView: UIView {
+    
     @IBOutlet weak var forecastTypeLabel: UILabel!
     
     override func awakeFromNib() {
+
         super.awakeFromNib()
     }
 
