@@ -11,7 +11,7 @@ import UIKit
 class HourlyDetailsTableViewCell: UITableViewCell {
 
     @IBOutlet weak var cloudCoverageLabel: UILabel!
-    @IBOutlet weak var humidityLabel: UILabel!
+    @IBOutlet weak var looksLikeLabel: UILabel!
     @IBOutlet weak var windSpeedLabel: UILabel!
     
     var hourlyData: HourlyData?
@@ -28,7 +28,7 @@ class HourlyDetailsTableViewCell: UITableViewCell {
         }
         
         cloudCoverageLabel.text = "\(h.cloudCover)%"
-        humidityLabel.text = "\(h.humidity)%"
+        looksLikeLabel.text = "\(h.summary)"
         windSpeedLabel.text = "\(h.windSpeed) mph"
      
         

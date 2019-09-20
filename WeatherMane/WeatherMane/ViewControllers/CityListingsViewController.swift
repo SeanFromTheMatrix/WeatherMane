@@ -86,8 +86,10 @@ extension CityListingsViewController: UITableViewDelegate {
         //static height for now
         //maybe use UIAutomaticTableDimension
         return 250
+        
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
         let sb = UIStoryboard(name: "Main", bundle: nil)
         let vc = sb.instantiateViewController(withIdentifier: "ForecastDetailsViewController") as! ForecastDetailsViewController
         
@@ -96,6 +98,7 @@ extension CityListingsViewController: UITableViewDelegate {
                     let gd = tableData else {
                             return
         }
+        
         vc.hourlyData = d
         vc.currentData = cw
         vc.generalData = gd
