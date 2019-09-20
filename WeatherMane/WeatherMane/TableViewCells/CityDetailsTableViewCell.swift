@@ -10,7 +10,6 @@ import UIKit
 
 class CityDetailsTableViewCell: UITableViewCell {
     
-    @IBOutlet weak var cityImage: UIImageView!
     @IBOutlet weak var cityName: UILabel!
     @IBOutlet weak var cityTemp: UILabel!
     @IBOutlet weak var cityVibe: UILabel!
@@ -32,19 +31,15 @@ class CityDetailsTableViewCell: UITableViewCell {
     
     func styleCell() {
         
-        guard let f = forecast else {
+        guard let h = hourlyData else {
             return
         }
         
-        cityName.text = f.timeZone
-        cityTemp.text = "\(Int(f.currentWeather.temperature))°F"
-        cityVibe.text = f.currentWeather.summary
+        cityVibe.text = "\(h.summary)"
+        cityName.text = "\(NSDate(timeIntervalSince1970: TimeInterval(h.time)))"
+        cityTemp.text = "\(h.temperature)°F"
         
-    }
-    
-    override func draw(_ rect: CGRect) {
-        cityImage.layer.cornerRadius = 60
-        cityImage.clipsToBounds = true
+        
     }
 
 }

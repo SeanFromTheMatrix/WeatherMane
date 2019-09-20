@@ -10,8 +10,8 @@ import UIKit
 
 enum ForeCastSections: Int, CaseIterable {
     case general = 0
-    case current = 1
-    case hourly = 2
+    case hourly = 1
+    case current = 2
 }
 
 class ForecastDetailsViewController: UIViewController {
@@ -21,7 +21,7 @@ class ForecastDetailsViewController: UIViewController {
     
     var generalData: Forecast?
     var currentData: CurrentWeather?
-    var hourlyData: [HourlyData] = []
+    var hourlyData: HourlyData?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,17 +59,14 @@ extension ForecastDetailsViewController: UITableViewDelegate {
             return 150
             
         case ForeCastSections.hourly.rawValue:
-            return 150
+            return 300
+            
             
         default:
             return 0
             
         }
     }
-    
-    
-
-    
 }
 
 extension ForecastDetailsViewController: UITableViewDataSource {
@@ -94,7 +91,7 @@ extension ForecastDetailsViewController: UITableViewDataSource {
             return 1
             
         case ForeCastSections.hourly.rawValue:
-            return hourlyData.count
+            return 1
             
         default:
             return 1
@@ -117,7 +114,7 @@ extension ForecastDetailsViewController: UITableViewDataSource {
             return view
             
         case ForeCastSections.hourly.rawValue:
-            view?.forecastTypeLabel.text = "Previous Forecasts by the Hour"
+            view?.forecastTypeLabel.text = "Forecast For Selected Date/Time"
             return view
             
         default:
@@ -148,7 +145,7 @@ extension ForecastDetailsViewController: UITableViewDataSource {
         case ForeCastSections.hourly.rawValue:
             let nc = tableView.dequeueReusableCell(withIdentifier: "HourlyDetailsTableViewCell", for: indexPath) as! HourlyDetailsTableViewCell
             
-            nc.hourlyData = hourlyData[indexPath.row]
+            nc.hourlyData = hourlyData
             nc.styleCell()
 
             cell = nc
