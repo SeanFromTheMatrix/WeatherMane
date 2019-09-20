@@ -67,9 +67,6 @@ extension ForecastDetailsViewController: UITableViewDelegate {
         }
     }
     
-    
-
-    
 }
 
 extension ForecastDetailsViewController: UITableViewDataSource {
