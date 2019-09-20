@@ -20,6 +20,12 @@
 		0C4CB554233222F5004DE8BD /* CurrentWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4CB553233222F5004DE8BD /* CurrentWeather.swift */; };
 		0C4CB556233223EE004DE8BD /* HourlyWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4CB555233223EE004DE8BD /* HourlyWeather.swift */; };
 		0C4CB55823322421004DE8BD /* HourlyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4CB55723322421004DE8BD /* HourlyData.swift */; };
+		0C4CB56323348F2D004DE8BD /* ForecastDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4CB56223348F2D004DE8BD /* ForecastDetailsViewController.swift */; };
+		0C4CB56A23349DD3004DE8BD /* ForecastDetailHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4CB56923349DD3004DE8BD /* ForecastDetailHeaderView.swift */; };
+		0C4CB56C23349DE2004DE8BD /* ForecastDetailHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C4CB56B23349DE2004DE8BD /* ForecastDetailHeaderView.xib */; };
+		0CD97BCE2334B72B0066AC52 /* GeneralDetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD97BCD2334B72B0066AC52 /* GeneralDetailsTableViewCell.swift */; };
+		0CD97BD02334B7460066AC52 /* CurrentDetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD97BCF2334B7460066AC52 /* CurrentDetailsTableViewCell.swift */; };
+		0CD97BD22334B7680066AC52 /* HourlyDetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD97BD12334B7680066AC52 /* HourlyDetailsTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +65,12 @@
 		0C4CB553233222F5004DE8BD /* CurrentWeather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentWeather.swift; sourceTree = "<group>"; };
 		0C4CB555233223EE004DE8BD /* HourlyWeather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourlyWeather.swift; sourceTree = "<group>"; };
 		0C4CB55723322421004DE8BD /* HourlyData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourlyData.swift; sourceTree = "<group>"; };
+		0C4CB56223348F2D004DE8BD /* ForecastDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastDetailsViewController.swift; sourceTree = "<group>"; };
+		0C4CB56923349DD3004DE8BD /* ForecastDetailHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastDetailHeaderView.swift; sourceTree = "<group>"; };
+		0C4CB56B23349DE2004DE8BD /* ForecastDetailHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ForecastDetailHeaderView.xib; sourceTree = "<group>"; };
+		0CD97BCD2334B72B0066AC52 /* GeneralDetailsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralDetailsTableViewCell.swift; sourceTree = "<group>"; };
+		0CD97BCF2334B7460066AC52 /* CurrentDetailsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentDetailsTableViewCell.swift; sourceTree = "<group>"; };
+		0CD97BD12334B7680066AC52 /* HourlyDetailsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourlyDetailsTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +121,7 @@
 		0C4CB51A233212D5004DE8BD /* WeatherMane */ = {
 			isa = PBXGroup;
 			children = (
+				0C4CB56423349D28004DE8BD /* Views */,
 				0C4CB55B233224B2004DE8BD /* TableViewCells */,
 				0C4CB55923322471004DE8BD /* ViewControllers */,
 				0C4CB5502332229C004DE8BD /* Models */,
@@ -155,6 +168,7 @@
 			isa = PBXGroup;
 			children = (
 				0C4CB54E2332185E004DE8BD /* CityListingsViewController.swift */,
+				0C4CB56223348F2D004DE8BD /* ForecastDetailsViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -163,8 +177,20 @@
 			isa = PBXGroup;
 			children = (
 				0C4CB54C23321835004DE8BD /* CityDetailsTableViewCell.swift */,
+				0CD97BCD2334B72B0066AC52 /* GeneralDetailsTableViewCell.swift */,
+				0CD97BCF2334B7460066AC52 /* CurrentDetailsTableViewCell.swift */,
+				0CD97BD12334B7680066AC52 /* HourlyDetailsTableViewCell.swift */,
 			);
 			path = TableViewCells;
+			sourceTree = "<group>";
+		};
+		0C4CB56423349D28004DE8BD /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				0C4CB56923349DD3004DE8BD /* ForecastDetailHeaderView.swift */,
+				0C4CB56B23349DE2004DE8BD /* ForecastDetailHeaderView.xib */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -274,6 +300,7 @@
 				0C4CB529233212D7004DE8BD /* LaunchScreen.storyboard in Resources */,
 				0C4CB526233212D7004DE8BD /* Assets.xcassets in Resources */,
 				0C4CB521233212D5004DE8BD /* Main.storyboard in Resources */,
+				0C4CB56C23349DE2004DE8BD /* ForecastDetailHeaderView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -299,13 +326,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				0C4CB55823322421004DE8BD /* HourlyData.swift in Sources */,
+				0CD97BCE2334B72B0066AC52 /* GeneralDetailsTableViewCell.swift in Sources */,
 				0C4CB54F2332185E004DE8BD /* CityListingsViewController.swift in Sources */,
+				0CD97BD22334B7680066AC52 /* HourlyDetailsTableViewCell.swift in Sources */,
 				0C4CB552233222B9004DE8BD /* Forecast.swift in Sources */,
+				0C4CB56323348F2D004DE8BD /* ForecastDetailsViewController.swift in Sources */,
 				0C4CB524233212D5004DE8BD /* WeatherMane.xcdatamodeld in Sources */,
 				0C4CB51C233212D5004DE8BD /* AppDelegate.swift in Sources */,
 				0C4CB554233222F5004DE8BD /* CurrentWeather.swift in Sources */,
+				0CD97BD02334B7460066AC52 /* CurrentDetailsTableViewCell.swift in Sources */,
 				0C4CB54D23321835004DE8BD /* CityDetailsTableViewCell.swift in Sources */,
 				0C4CB556233223EE004DE8BD /* HourlyWeather.swift in Sources */,
+				0C4CB56A23349DD3004DE8BD /* ForecastDetailHeaderView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

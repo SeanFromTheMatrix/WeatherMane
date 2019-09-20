@@ -8,11 +8,12 @@
 
 import UIKit
 
+
 class CityListingsViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     
-    var tableData: [Forecast] = []
+    var tableData: Forecast?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,10 +21,17 @@ class CityListingsViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         
-        // Refactor and figure out how to get multiple locations with 1 URLSession
+        //disable scrolling since we are using a TableView but only loading 1 item
+        tableView.isScrollEnabled = false
+        
+        self.navigationController?.isNavigationBarHidden = true
+
+        // set alpha to 0 until data loads in order to prevent flashing
+        tableView.alpha = 0.0
+        
+        // pulls forecast of Los Angeles using DarkSky API
         fetchLAForecasts()
-        fetchNYForecasts()
-        fetchHIForecasts()
+        
     }
     
     func fetchLAForecasts() {
@@ -31,102 +39,96 @@ class CityListingsViewController: UIViewController {
         // Using Los Angeles' cordinates
         let urlString = "https://api.darksky.net/forecast/427c1a7660ed6eed6afec22ef35ae055/37.8267,-122.4233?&exclude=minutely,flags,daily,alerts"
 
+        // Turn the string into a URL for the URL session
         guard let url = URL(string: urlString) else {
             return
         }
 
+        // Initiate API call
         URLSession.shared.dataTask(with: url) { (data, response, error) in
             
+            //check for a data source
             guard let d = data else {
                 return
             }
 
             do {
-                
+                // decode the Forecast
                 let forecasts = try JSONDecoder().decode(Forecast.self, from: d)
-                self.tableData.append(forecasts)
                 
+                // set the dataSource
+                self.tableData = forecasts
+                
+                // reload data in dispatch queue/main thread
+                // set alpha back to 1 so we can see results
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                    UIView.animate(withDuration: 0.99, animations: {
+                        self.tableView.alpha = 1.0
+                    })
+                }
             } catch {
+                
+                // if there is an error, print it
                 print("error", error)
             }
 
         }.resume()
 
     }
-    
-    func fetchNYForecasts() {
-        
-        // Using NYs' cordinates
-        let urlString = "https://api.darksky.net/forecast/427c1a7660ed6eed6afec22ef35ae055/42.3601,-71.0589?&exclude=minutely,flags,daily,alerts"
-        
-        guard let url = URL(string: urlString) else {
-            return
-        }
-        
-        URLSession.shared.dataTask(with: url) { (data, response, error) in
-            
-            guard let d = data else {
-                return
-            }
-            
-            do {
-                
-                let forecasts = try JSONDecoder().decode(Forecast.self, from: d)
-                self.tableData.append(forecasts)
-                
-            } catch {
-                print("error", error)
-            }
-            
-        }.resume()
-        
-    }
-    
-    func fetchHIForecasts() {
-        
-        // Using HIs' cordinates
-        let urlString = "https://api.darksky.net/forecast/427c1a7660ed6eed6afec22ef35ae055/20.7161,-158.214676?&exclude=minutely,flags,daily,alerts"
-        
-        guard let url = URL(string: urlString) else {
-            return
-        }
-        
-        URLSession.shared.dataTask(with: url) { (data, response, error) in
-            
-            guard let d = data else {
-                return
-            }
-            
-            do {
-                
-                let forecasts = try JSONDecoder().decode(Forecast.self, from: d)
-                self.tableData.append(forecasts)
-                
-            } catch {
-                print("error", error)
-            }
-            
-        }.resume()
-
-    }
-    
     
 }
 
 extension CityListingsViewController: UITableViewDelegate {
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        //static height for now
+        //maybe use UIAutomaticTableDimension
+        return 250
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let sb = UIStoryboard(name: "Main", bundle: nil)
+        let vc = sb.instantiateViewController(withIdentifier: "ForecastDetailsViewController") as! ForecastDetailsViewController
+        
+        guard let d = tableData?.hourlyWeather.data,
+                let cw = tableData?.currentWeather,
+                    let gd = tableData else {
+                            return
+        }
+        vc.hourlyData = d
+        vc.currentData = cw
+        vc.generalData = gd
+    
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
 }
 
 extension CityListingsViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-         return tableData.count
+
+    func tableView(_ tableView : UITableView, numberOfRowsInSection section: Int) -> Int {
+        //since we are only fetching 1 item from the API, return 1
+        //if we add more forecasts, refactor tableData -> [tableData] and return tableData.count
+        return 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CityDetailsTableViewCell", for: indexPath) as! CityDetailsTableViewCell
         
+        // pass the data to the cell
+        cell.forecast = tableData
+        cell.currentWeather = tableData?.currentWeather
+        cell.hourlyData = tableData?.hourlyWeather.data[indexPath.row]
+        
+        // set the data
+        cell.setData(hourlyData: tableData?.hourlyWeather.data[indexPath.row], currentWeather: tableData?.currentWeather)
+        
+        // style the cell accordingly
+        cell.styleCell()
+
+
         return cell
     }
-    
     
 }
