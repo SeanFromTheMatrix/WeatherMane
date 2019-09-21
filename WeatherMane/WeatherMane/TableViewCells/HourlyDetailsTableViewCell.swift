@@ -13,6 +13,8 @@ class HourlyDetailsTableViewCell: UITableViewCell {
     @IBOutlet weak var cloudCoverageLabel: UILabel!
     @IBOutlet weak var looksLikeLabel: UILabel!
     @IBOutlet weak var windSpeedLabel: UILabel!
+    @IBOutlet weak var tempLabel: UILabel!
+    @IBOutlet weak var feelsLikeTempLabel: UILabel!
     
     var hourlyData: HourlyData?
     
@@ -28,6 +30,8 @@ class HourlyDetailsTableViewCell: UITableViewCell {
         }
         
         cloudCoverageLabel.text = "\(h.cloudCover)%"
+        tempLabel.text = "\(h.temperature)°F"
+        feelsLikeTempLabel.text = "\(h.apparentTemperature)°F"
         looksLikeLabel.text = "\(h.summary)"
         windSpeedLabel.text = "\(h.windSpeed) mph"
      
