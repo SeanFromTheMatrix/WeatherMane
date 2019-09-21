@@ -19,15 +19,16 @@ class CityDetailsTableViewCell: UITableViewCell {
     var hourlyData: HourlyData?
     var currentWeather: CurrentWeather?
     
-    func setData(hourlyData: HourlyData?,  currentWeather: CurrentWeather?) {
-        self.hourlyData = hourlyData
-        self.currentWeather = currentWeather
-    }
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         
+    }
+    
+    //
+    func setData(hourlyData: HourlyData?,  currentWeather: CurrentWeather?) {
+        self.hourlyData = hourlyData
+        self.currentWeather = currentWeather
     }
     
     func styleCell() {
