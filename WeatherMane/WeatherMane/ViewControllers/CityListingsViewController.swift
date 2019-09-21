@@ -6,6 +6,21 @@
 //  Copyright © 2019 Sean Bukich. All rights reserved.
 //
 
+/*
+ ~~~ DEV NOTES ~~~
+ The API I chose to use (DARK SKY) only loaded 1 super object with nested objects inside of it.
+ 
+ On master branch, I have loaded Hourly weather forcasts into the initial tableViewController. The application displays some high level data abour the forcast for each hour at a different indexPath. When user selectedItemAtIndexPath, the navigation controller pushes to a detailVC that shows more information about the hourly forecast, the current weather, and some general location data.
+ 
+ * I think the implementation that is on the master branch is better suited for the API that I chose. It allows for a better understanding of what the weather is like in Los Angeles
+ 
+ 
+ On the branch named 'working build', I have displayed 1 tableViewCell that shows some high levels details about Los Angeles' forecast. The cell contains all of the data that was fetched from the API. When a user taps on the cell, it will show detailed information about the LA weather forecast.
+ 
+ * I would prefer the implementation on the 'working build' branch if the API returned a list of locations (ex. LA, NY, HI, AZ) so that I could pump all of those locations into tableViewCells on the homescreen to allow for a more comprehensive weather report
+ 
+ */
+
 import UIKit
 
 
