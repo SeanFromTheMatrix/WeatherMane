@@ -29,6 +29,9 @@ class ForecastDetailsViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         
+        print("gd", generalData)
+        print("cd", currentData)
+        
         setUpGestures()
         
     }

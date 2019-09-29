@@ -10,6 +10,7 @@ import UIKit
 
 class GeneralDetailsTableViewCell: UITableViewCell {
     
+    @IBOutlet weak var cityName: UILabel!
     @IBOutlet weak var latitudeLongitudeLabel: UILabel!
     
     var dataSource: Forecast?
@@ -24,6 +25,8 @@ class GeneralDetailsTableViewCell: UITableViewCell {
         guard let d = dataSource else {
             return
         }
+        
+        cityName.text = d.timeZone
         latitudeLongitudeLabel.text = "\(d.latitude)/\(d.longitude)"
     }
 

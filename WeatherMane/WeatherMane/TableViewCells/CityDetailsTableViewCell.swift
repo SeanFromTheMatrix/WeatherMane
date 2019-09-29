@@ -19,6 +19,8 @@ class CityDetailsTableViewCell: UITableViewCell {
     var hourlyData: HourlyData?
     var currentWeather: CurrentWeather?
     
+    var cellLocation: ListingCity?
+    
     func setData(hourlyData: HourlyData?,  currentWeather: CurrentWeather?) {
         self.hourlyData = hourlyData
         self.currentWeather = currentWeather
@@ -39,6 +41,12 @@ class CityDetailsTableViewCell: UITableViewCell {
         cityName.text = f.timeZone
         cityTemp.text = "\(Int(f.currentWeather.temperature))°F"
         cityVibe.text = f.currentWeather.summary
+        
+        if cellLocation == .LA {
+            cityImage.image = UIImage(named: "losAngelesImage")
+        } else {
+            cityImage.image = UIImage(named: "newYorkImage")
+        }
         
     }
     
