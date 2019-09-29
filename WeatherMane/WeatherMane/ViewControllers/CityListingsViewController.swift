@@ -109,25 +109,24 @@ extension CityListingsViewController: UITableViewDelegate {
         let vc = sb.instantiateViewController(withIdentifier: "ForecastDetailsViewController") as! ForecastDetailsViewController
         
         if indexPath.row == 0 {
-            guard let d = laData?.hourlyWeather.data,
-                    let cw = laData?.currentWeather,
-                        let gd = laData else {
-                                return
+            
+            guard let d = laData else {
+                return
             }
-            vc.hourlyData = d
-            vc.currentData = cw
-            vc.generalData = gd
+            
+            vc.generalData = d
+            vc.currentData = d.currentWeather
+            vc.hourlyData = d.hourlyWeather.data
             
         } else {
             
-            guard let d = nyData?.hourlyWeather.data,
-                    let cw = nyData?.currentWeather,
-                        let gd = nyData else {
-                                return
+            guard let d = nyData else {
+                return
             }
-            vc.hourlyData = d
-            vc.currentData = cw
-            vc.generalData = gd
+            
+            vc.generalData = d
+            vc.currentData = d.currentWeather
+            vc.hourlyData = d.hourlyWeather.data
             
         }
         
