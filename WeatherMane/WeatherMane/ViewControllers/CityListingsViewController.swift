@@ -32,8 +32,6 @@ class CityListingsViewController: UIViewController {
     var laData: Forecast?
     var nyData: Forecast?
     
-    let apiQueue = OperationQueue()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
