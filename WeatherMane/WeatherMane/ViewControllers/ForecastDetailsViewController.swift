@@ -132,19 +132,25 @@ extension ForecastDetailsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell: UITableViewCell!
         
+        guard let gd = generalData,
+            let cd = currentData,
+            let hd = hourlyData else {
+            return cell
+        }
+        
         switch indexPath.section {
             
         case ForeCastSections.general.rawValue:
             let nc = tableView.dequeueReusableCell(withIdentifier: "GeneralDetailsTableViewCell", for: indexPath) as! GeneralDetailsTableViewCell
             
-            nc.dataSource = generalData
+            nc.dataSource = gd
             nc.styleCell()
             cell = nc
             
         case ForeCastSections.current.rawValue:
             let nc = tableView.dequeueReusableCell(withIdentifier: "CurrentDetailsTableViewCell", for: indexPath) as! CurrentDetailsTableViewCell
             
-            nc.currentWeather = currentData
+            nc.currentWeather = cd
             nc.styleCell()
 
             cell = nc
@@ -152,7 +158,7 @@ extension ForecastDetailsViewController: UITableViewDataSource {
         case ForeCastSections.hourly.rawValue:
             let nc = tableView.dequeueReusableCell(withIdentifier: "HourlyDetailsTableViewCell", for: indexPath) as! HourlyDetailsTableViewCell
             
-            nc.hourlyData = hourlyData
+            nc.hourlyData = hd
             nc.styleCell()
 
             cell = nc
@@ -165,6 +171,11 @@ extension ForecastDetailsViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        
+        guard let _ = generalData else {
+            return 0
+        }
+        
         switch section {
             
         case ForeCastSections.general.rawValue:
