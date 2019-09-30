@@ -149,17 +149,12 @@ extension CityListingsViewController: UITableViewDataSource {
             cell.hourlyData = laData?.hourlyWeather.data[indexPath.row]
             cell.cellLocation = .LA
             
-            // set the data
-            cell.setData(hourlyData: laData?.hourlyWeather.data[indexPath.row], currentWeather: laData?.currentWeather)
         } else {
             // pass the data to the cell
             cell.forecast = nyData
             cell.currentWeather = nyData?.currentWeather
             cell.hourlyData = nyData?.hourlyWeather.data[indexPath.row]
             cell.cellLocation = .NY
-
-            // set the data
-            cell.setData(hourlyData: nyData?.hourlyWeather.data[indexPath.row], currentWeather: nyData?.currentWeather)
         }
         
         
