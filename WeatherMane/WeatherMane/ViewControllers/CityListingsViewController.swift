@@ -14,8 +14,19 @@ This branch 'networkLayerRefactor' is set up to load forecasts from different lo
  
 I have implemented a dispatch group to handle two concurrent API calls.
  
-Tapping on a cell will display more detailed forecast information about the different cities at each indexPath
+Tapping on a cell will display more detailed information about the different cities at each indexPath
  
+ 
+ ~~~~~~
+ I've noticed that DarkSky API is not returning precise data. The temperatures are off in both Los Angeles and New York.
+ Tested to make sure this is not an error on my end by using the URL in a web browser. Response shows 60 degrees F, while it is really 69 degrees F.
+ ~~~~~~
+ 
+ If error persists, switch API services.
+ 
+ Consider making an array [ForeCast] to use for the datasource, instead of separate sources for LA and NY.
+ Append the object from completion handler of API call to the array
+
 */
 
 import UIKit
@@ -80,7 +91,7 @@ class CityListingsViewController: UIViewController {
             
             self.tableView.reloadData()
             
-            UIView.animate(withDuration: 0.7) {
+            UIView.animate(withDuration: 0.6) {
                 self.tableView.alpha = 1.0
             }
         }
@@ -110,8 +121,6 @@ extension CityListingsViewController: UITableViewDelegate {
             }
             
             vc.generalData = d
-            vc.currentData = d.currentWeather
-            vc.hourlyData = d.hourlyWeather.data
             
         } else {
             
@@ -120,8 +129,6 @@ extension CityListingsViewController: UITableViewDelegate {
             }
             
             vc.generalData = d
-            vc.currentData = d.currentWeather
-            vc.hourlyData = d.hourlyWeather.data
             
         }
         
@@ -133,8 +140,7 @@ extension CityListingsViewController: UITableViewDelegate {
 extension CityListingsViewController: UITableViewDataSource {
 
     func tableView(_ tableView : UITableView, numberOfRowsInSection section: Int) -> Int {
-        //since we are only fetching 1 item from the API, return 1
-        //if we add more forecasts, refactor tableData -> [tableData] and return tableData.count
+        // return 2 because we only have LA and NY as potential datasources
         return 2
     }
     
@@ -145,15 +151,11 @@ extension CityListingsViewController: UITableViewDataSource {
         if indexPath.row == 0 {
             // pass the data to the cell
             cell.forecast = laData
-            cell.currentWeather = laData?.currentWeather
-            cell.hourlyData = laData?.hourlyWeather.data[indexPath.row]
             cell.cellLocation = .LA
             
         } else {
             // pass the data to the cell
             cell.forecast = nyData
-            cell.currentWeather = nyData?.currentWeather
-            cell.hourlyData = nyData?.hourlyWeather.data[indexPath.row]
             cell.cellLocation = .NY
         }
         
