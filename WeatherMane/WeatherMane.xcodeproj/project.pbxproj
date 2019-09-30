@@ -108,6 +108,24 @@
 			path = NetworkLayer;
 			sourceTree = "<group>";
 		};
+		0C16A65B234192960044070E /* CityListingCells */ = {
+			isa = PBXGroup;
+			children = (
+				0C4CB54C23321835004DE8BD /* CityDetailsTableViewCell.swift */,
+			);
+			path = CityListingCells;
+			sourceTree = "<group>";
+		};
+		0C16A65C234192A70044070E /* ForecastDetailsCells */ = {
+			isa = PBXGroup;
+			children = (
+				0CD97BCD2334B72B0066AC52 /* GeneralDetailsTableViewCell.swift */,
+				0CD97BCF2334B7460066AC52 /* CurrentDetailsTableViewCell.swift */,
+				0CD97BD12334B7680066AC52 /* HourlyDetailsTableViewCell.swift */,
+			);
+			path = ForecastDetailsCells;
+			sourceTree = "<group>";
+		};
 		0C4CB50F233212D5004DE8BD = {
 			isa = PBXGroup;
 			children = (
@@ -187,10 +205,8 @@
 		0C4CB55B233224B2004DE8BD /* TableViewCells */ = {
 			isa = PBXGroup;
 			children = (
-				0C4CB54C23321835004DE8BD /* CityDetailsTableViewCell.swift */,
-				0CD97BCD2334B72B0066AC52 /* GeneralDetailsTableViewCell.swift */,
-				0CD97BCF2334B7460066AC52 /* CurrentDetailsTableViewCell.swift */,
-				0CD97BD12334B7680066AC52 /* HourlyDetailsTableViewCell.swift */,
+				0C16A65C234192A70044070E /* ForecastDetailsCells */,
+				0C16A65B234192960044070E /* CityListingCells */,
 			);
 			path = TableViewCells;
 			sourceTree = "<group>";

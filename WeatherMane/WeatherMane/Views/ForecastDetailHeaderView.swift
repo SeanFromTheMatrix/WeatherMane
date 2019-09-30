@@ -10,6 +10,7 @@ import UIKit
 
 class ForecastDetailHeaderView: UIView {
     
+    // Create outlet for the header title label
     @IBOutlet weak var forecastTypeLabel: UILabel!
     
     override func awakeFromNib() {

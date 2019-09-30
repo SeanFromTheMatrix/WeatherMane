@@ -16,6 +16,8 @@ struct Forecast: Decodable {
     let currentWeather: CurrentWeather
     let hourlyWeather: HourlyWeather
     
+    
+    // Add coding keys to read the keys in the JSON
     enum CodingKeys: String, CodingKey {
         
         case latitude, longitude

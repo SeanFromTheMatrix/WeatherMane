@@ -10,6 +10,7 @@ import Foundation
 
 struct WMAPI {
     
+    // Generic function to handle the API calls
     static func fetchGenericForecasts<T: Decodable>(urlString: String, completion: @escaping (T) -> ()) {
 
         // Turn the string into a URL for the URL session
@@ -29,6 +30,7 @@ struct WMAPI {
                 // decode the Forecast
                 let object = try JSONDecoder().decode(T.self, from: d)
                 
+                // Complete with the decoded object
                 completion(object)
             } catch {
                 
