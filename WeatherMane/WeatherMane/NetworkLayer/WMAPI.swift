@@ -21,20 +21,20 @@ struct WMAPI {
         // Initiate API call
         URLSession.shared.dataTask(with: url) { (data, response, error) in
             
-            //check for a data source
+            // Check for a data source
             guard let d = data else {
                 return
             }
 
             do {
-                // decode the Forecast
+                // Decode the Forecast
                 let object = try JSONDecoder().decode(T.self, from: d)
                 
                 // Complete with the decoded object
                 completion(object)
             } catch {
                 
-                // if there is an error, print it
+                // If there is an error, print it
                 print("error", error)
             }
 

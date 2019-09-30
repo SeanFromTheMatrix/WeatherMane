@@ -44,7 +44,7 @@ class CityListingsViewController: UIViewController {
     // Create Datasources
     var laData: Forecast?
     var nyData: Forecast?
-    
+
     // NOTE: Will need this variable if I decide to append API results to a single dataSource
 //    var dataSource: [Forecast] = []
     
