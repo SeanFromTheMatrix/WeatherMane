@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C26D1272341B44E00D3CE96 /* WMAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C26D1262341B44E00D3CE96 /* WMAPI.swift */; };
 		0C4CB51C233212D5004DE8BD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4CB51B233212D5004DE8BD /* AppDelegate.swift */; };
 		0C4CB521233212D5004DE8BD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C4CB51F233212D5004DE8BD /* Main.storyboard */; };
 		0C4CB524233212D5004DE8BD /* WeatherMane.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0C4CB522233212D5004DE8BD /* WeatherMane.xcdatamodeld */; };
@@ -46,6 +47,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0C26D1262341B44E00D3CE96 /* WMAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WMAPI.swift; sourceTree = "<group>"; };
 		0C4CB518233212D5004DE8BD /* WeatherMane.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherMane.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0C4CB51B233212D5004DE8BD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0C4CB520233212D5004DE8BD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -98,6 +100,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0C26D1252341B43400D3CE96 /* NetworkLayer */ = {
+			isa = PBXGroup;
+			children = (
+				0C26D1262341B44E00D3CE96 /* WMAPI.swift */,
+			);
+			path = NetworkLayer;
+			sourceTree = "<group>";
+		};
 		0C4CB50F233212D5004DE8BD = {
 			isa = PBXGroup;
 			children = (
@@ -121,6 +131,7 @@
 		0C4CB51A233212D5004DE8BD /* WeatherMane */ = {
 			isa = PBXGroup;
 			children = (
+				0C26D1252341B43400D3CE96 /* NetworkLayer */,
 				0C4CB56423349D28004DE8BD /* Views */,
 				0C4CB55B233224B2004DE8BD /* TableViewCells */,
 				0C4CB55923322471004DE8BD /* ViewControllers */,
@@ -329,6 +340,7 @@
 				0CD97BCE2334B72B0066AC52 /* GeneralDetailsTableViewCell.swift in Sources */,
 				0C4CB54F2332185E004DE8BD /* CityListingsViewController.swift in Sources */,
 				0CD97BD22334B7680066AC52 /* HourlyDetailsTableViewCell.swift in Sources */,
+				0C26D1272341B44E00D3CE96 /* WMAPI.swift in Sources */,
 				0C4CB552233222B9004DE8BD /* Forecast.swift in Sources */,
 				0C4CB56323348F2D004DE8BD /* ForecastDetailsViewController.swift in Sources */,
 				0C4CB524233212D5004DE8BD /* WeatherMane.xcdatamodeld in Sources */,

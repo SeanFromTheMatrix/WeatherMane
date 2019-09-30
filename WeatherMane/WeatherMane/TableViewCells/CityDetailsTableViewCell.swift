@@ -14,14 +14,7 @@ class CityDetailsTableViewCell: UITableViewCell {
     @IBOutlet weak var cityTemp: UILabel!
     @IBOutlet weak var cityVibe: UILabel!
     
-    var forecast: Forecast?
     var hourlyData: HourlyData?
-    var currentWeather: CurrentWeather?
-    
-    func setData(hourlyData: HourlyData?,  currentWeather: CurrentWeather?) {
-        self.hourlyData = hourlyData
-        self.currentWeather = currentWeather
-    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -38,7 +31,6 @@ class CityDetailsTableViewCell: UITableViewCell {
         cityVibe.text = "\(h.summary)"
         cityName.text = "\(NSDate(timeIntervalSince1970: TimeInterval(h.time)))"
         cityTemp.text = "\(h.temperature)°F"
-        
         
     }
 
