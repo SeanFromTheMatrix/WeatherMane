@@ -27,7 +27,6 @@ struct WMAPI {
             do {
                 // Decode the forecast
                 let object = try JSONDecoder().decode(T.self, from: d)
-                
                 completion(object)
             } catch {
                 print(error, "error")

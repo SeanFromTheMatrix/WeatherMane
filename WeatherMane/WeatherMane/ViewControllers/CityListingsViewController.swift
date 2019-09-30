@@ -42,11 +42,11 @@ class CityListingsViewController: UIViewController {
         tableView.alpha = 0.0
         
         // pulls forecast of Los Angeles using DarkSky API
-        fetchLAForecasts()
+        fetchHourlyForecasts()
         
     }
     
-    func fetchLAForecasts() {
+    func fetchHourlyForecasts() {
         WMAPI.fetchGenericForecasts(urlString: "https://api.darksky.net/forecast/427c1a7660ed6eed6afec22ef35ae055/37.8267,-122.4233?&exclude=minutely,flags,daily,alerts") { (fc: Forecast) in
             self.tableData = fc
             
@@ -70,6 +70,9 @@ extension CityListingsViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
+        guard let _  = tableData else {
+            return 0.0
+        }
         //static height for now
         //maybe use UIAutomaticTableDimension
         return 200

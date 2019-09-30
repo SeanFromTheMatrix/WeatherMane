@@ -78,21 +78,17 @@ extension ForecastDetailsViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
+        guard let _ = generalData else {
+            return 0
+        }
+        
         switch section {
         case ForeCastSections.general.rawValue:
-            
-            if generalData == nil {
-                return 0
-            }
-            
             return 1
-            
         case ForeCastSections.current.rawValue:
             return 1
-            
         case ForeCastSections.hourly.rawValue:
             return 1
-            
         default:
             return 1
 
@@ -102,6 +98,10 @@ extension ForecastDetailsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
 
         let view = Bundle.main.loadNibNamed("ForecastDetailHeaderView", owner: self, options: nil)![0] as? ForecastDetailHeaderView
+        
+        guard let _ = generalData else {
+            return UIView()
+        }
         
         switch section {
             
