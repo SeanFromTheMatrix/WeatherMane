@@ -50,6 +50,10 @@ extension ForecastDetailsViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
+        guard let _ = generalData else {
+            return 0
+        }
+        
         switch indexPath.section {
             
         case ForeCastSections.general.rawValue:
@@ -61,7 +65,6 @@ extension ForecastDetailsViewController: UITableViewDelegate {
         case ForeCastSections.hourly.rawValue:
             return 300
             
-            
         default:
             return 0
             
@@ -72,6 +75,10 @@ extension ForecastDetailsViewController: UITableViewDelegate {
 extension ForecastDetailsViewController: UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
+        
+        guard let _ = generalData else {
+            return 0
+        }
         
         return ForeCastSections.allCases.count
     }
