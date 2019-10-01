@@ -70,6 +70,7 @@ class CityListingsViewController: UIViewController {
         
     }
     
+    // Dispatch group not ideal for lots of API calls. It works well here because there are only two
     // Create function to handle Network Requests
     func apiCallBlock(){
         
