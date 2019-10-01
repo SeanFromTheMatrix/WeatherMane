@@ -8,6 +8,8 @@
 
 import Foundation
 
+// Data model to store values for hourlyData JSON
+
 struct HourlyData: Codable {
     
     let time: Int

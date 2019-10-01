@@ -8,6 +8,7 @@
 
 import Foundation
 
+// Data model to store values for entire forecast JSON
 struct Forecast: Decodable {
 
     let latitude: Float
@@ -16,6 +17,7 @@ struct Forecast: Decodable {
     let currentWeather: CurrentWeather
     let hourlyWeather: HourlyWeather
     
+    // Add coding keys to read the JSON keys
     enum CodingKeys: String, CodingKey {
         
         case latitude, longitude

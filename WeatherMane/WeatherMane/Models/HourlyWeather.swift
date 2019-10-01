@@ -8,6 +8,7 @@
 
 import Foundation
 
+// Data model to store values for hourlyWeather JSON
 struct HourlyWeather: Codable {
     
     let summary: String?

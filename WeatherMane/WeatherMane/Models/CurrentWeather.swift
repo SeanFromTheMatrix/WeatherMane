@@ -8,6 +8,7 @@
 
 import Foundation
 
+// Data model to store values for currentWeather JSON
 struct CurrentWeather: Codable {
     
     let time: Int

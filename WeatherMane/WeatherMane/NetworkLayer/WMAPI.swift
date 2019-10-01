@@ -9,6 +9,8 @@
 import Foundation
 
 struct WMAPI {
+    
+    // Generic function to handle API calls
     static func fetchGenericForecasts<T: Decodable>(urlString: String, completion: @escaping (T) -> ()) {
         
         // Turn the string into a URL for the URL session
@@ -24,13 +26,16 @@ struct WMAPI {
                 return
             }
             
+            // Do->Try->Catch
             do {
                 // Decode the forecast
                 let object = try JSONDecoder().decode(T.self, from: d)
+                // Use 'object' to update VC in completion handler
                 completion(object)
             } catch {
                 print(error, "error")
             }
+        // Resume task
         }.resume()
     }
 }
