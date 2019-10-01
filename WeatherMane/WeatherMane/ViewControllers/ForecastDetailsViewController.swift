@@ -179,15 +179,25 @@ extension ForecastDetailsViewController: UITableViewDataSource {
 
     // Pass data and customize each cell
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell: UITableViewCell!
         
+        // Create cell to use of there is no data
+        let c = UITableViewCell()
+        let noData: String = "Error getting forecasts"
+        
+        c.textLabel?.text = noData
+        c.textLabel?.textColor = UIColor.black
+        c.textLabel?.textAlignment = .center
+        c.textLabel?.font = UIFont.systemFont(ofSize: 15, weight: .semibold)
+                
         // Check to make sure there is data to pass to each cell
         // NOTE: try refactoring this to only need 1 data source(generalData has the entire forecast)
         guard let gd = generalData,
             let cd = currentData,
             let hd = hourlyData else {
-            return cell
+            return c
         }
+        
+        var cell = UITableViewCell()
         
         // Switch on each indexPath/ForeCastSections to determine which cell is being accessed
         switch indexPath.section {

@@ -132,13 +132,23 @@ extension CityListingsViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "CityDetailsTableViewCell", for: indexPath) as! CityDetailsTableViewCell
+        
+        // Create cell to use of there is no data
+        let c = UITableViewCell()
+        let noData: String = "Error getting forecasts"
+        
+        c.textLabel?.text = noData
+        c.textLabel?.textColor = UIColor.black
+        c.textLabel?.textAlignment = .center
+        c.textLabel?.font = UIFont.systemFont(ofSize: 15, weight: .semibold)
         
         // Check for data, if no data return empty cell
         guard let td = tableData else {
-            return cell
+            return c
         }
         
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CityDetailsTableViewCell", for: indexPath) as! CityDetailsTableViewCell
+
         // Pass the [data]
         cell.hourlyData = td.hourlyWeather.data[indexPath.row]
         
