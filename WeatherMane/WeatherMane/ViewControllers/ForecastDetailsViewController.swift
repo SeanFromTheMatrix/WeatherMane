@@ -59,6 +59,11 @@ extension ForecastDetailsViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
+        // Make sure we have data
+        guard let _ = generalData else {
+            return 0
+        }
+        
         // Set heights for each cell
         switch indexPath.section {
             
