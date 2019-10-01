@@ -178,20 +178,36 @@ extension CityListingsViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
+        // Create cell to use of there is no data
+        let c = UITableViewCell()
+        let noData: String = "Error getting forecasts"
+        
+        c.textLabel?.text = noData
+        c.textLabel?.textColor = UIColor.black
+        c.textLabel?.textAlignment = .center
+        c.textLabel?.font = UIFont.systemFont(ofSize: 15, weight: .semibold)
+        
         // Create an instance of the cell we want to access
+        
+        
+        guard let la = laData,
+            let ny = nyData else {
+                return c
+        }
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "CityDetailsTableViewCell", for: indexPath) as! CityDetailsTableViewCell
         
         // Check to see which index patgh is being accessed
         if indexPath.row == 0 {
             // Pass the data to the cell
-            cell.forecast = laData
+            cell.forecast = la
             
             // Set the context for the cell
             cell.cellLocation = .LA
             
         } else {
             // Pass the data to the cell
-            cell.forecast = nyData
+            cell.forecast = ny
             
             // Set the context for the cell
             cell.cellLocation = .NY
