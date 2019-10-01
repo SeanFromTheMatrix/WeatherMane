@@ -187,8 +187,8 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Los Angeles" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rxg-n2-8Fo">
-                                                    <rect key="frame" x="73.333333333333314" y="6" width="93.666666666666686" height="28"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rxg-n2-8Fo">
+                                                    <rect key="frame" x="73.333333333333329" y="6" width="41.666666666666671" height="28"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="28" id="Rxe-Ov-kSj"/>
                                                     </constraints>
