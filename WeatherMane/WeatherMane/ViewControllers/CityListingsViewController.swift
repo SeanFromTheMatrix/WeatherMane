@@ -191,7 +191,7 @@ extension CityListingsViewController: UITableViewDataSource {
         
         
         guard let la = laData,
-            let ny = nyData else {
+             let ny = nyData else {
                 return c
         }
         
